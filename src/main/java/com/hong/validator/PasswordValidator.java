@@ -1,10 +1,12 @@
-package com.hong;
+package com.hong.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import com.hong.annotation.Password;
 
 public class PasswordValidator implements ConstraintValidator<Password, String> {
 

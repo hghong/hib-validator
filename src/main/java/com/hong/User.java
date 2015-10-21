@@ -10,6 +10,8 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.hong.annotation.Same;
+
 public class User {
 	@NotBlank(message = "名字不能为空或者空串")
 	@Length(min = 2, max = 10, message = "名字必须由2~10个字组成")
@@ -20,10 +22,13 @@ public class User {
 
 	@Email(message = "邮箱格式不正确")
 	private String email;
-
+	
+	@Same(value="password2")
 	@Pattern(regexp = "/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,10}$/", message = "密码必须是5~10位数字和字母的组合")
 	private String password;
 
+	private String password2;
+	
 	@AssertTrue(message = "字段必须为真")
 	private boolean valid;
 
@@ -65,5 +70,13 @@ public class User {
 
 	public void setValid(boolean valid) {
 		this.valid = valid;
+	}
+
+	public String getPassword2() {
+		return password2;
+	}
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 }

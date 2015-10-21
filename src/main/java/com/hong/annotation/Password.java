@@ -1,4 +1,4 @@
-package com.hong;
+package com.hong.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,7 +9,9 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+import com.hong.validator.PasswordValidator;
+
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = PasswordValidator.class)
 @Documented
@@ -19,6 +21,4 @@ public @interface Password {
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
-	
-	String same() default "";
 }
